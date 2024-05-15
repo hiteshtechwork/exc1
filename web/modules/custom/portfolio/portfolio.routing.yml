@@ -1,0 +1,7 @@
+portfolio.form:
+  path: "/portfolio/form"
+  defaults:
+    _form: '\Drupal\portfolio\Form\PortfolioForm'
+    _title: "Create Portfolio"
+  requirements:
+    _permission: "access content"

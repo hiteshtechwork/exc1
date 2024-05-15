@@ -1,0 +1,12 @@
+# Ignore drupal core.
+web/core
+
+# Ignore contrib modules. These should be created during build process.
+web/modules/contrib
+web/themes/contrib
+drush/Commands
+
+#Composer vendor
+vendor/
+vendor/.git
+

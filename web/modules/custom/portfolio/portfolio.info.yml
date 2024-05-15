@@ -1,0 +1,5 @@
+name: Custom Portfolio Form
+type: module
+description: Provides a custom form to create a portfolio node.
+package: Custom
+core_version_requirement: ^9 || ^10
