@@ -1,0 +1,5 @@
+my_theme-global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/style.css: {}

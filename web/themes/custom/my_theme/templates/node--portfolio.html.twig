@@ -1,0 +1,26 @@
+<div>
+
+	<img src="{{ file_url(node.field_profile_picture.entity.uri.value) }}" alt="{{ node.field_profile_picture.alt }}" title="{{ node.field_profile_picture.title }}">
+
+
+	<div>
+		<p>{{ node.field_email.value }}</p>
+
+		<p>{{ node.field_mobile_number.value }}</p>
+
+		<p>{{ node.field_address.value }}</p>
+
+	</div>
+	<div>
+		<p>{{ node.field_short_bio.value }}</p>
+
+	</div>
+
+	<div>{# {{ block('project_details_block') }} #}
+
+		{# {{ block('block_view', { 'id': 'block_1' }) }} #}
+
+
+	</div>
+
+</div>

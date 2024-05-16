@@ -1,0 +1,6 @@
+listing_view_css:
+  version: 1.x
+  css:
+    theme:
+      css/listing_view.css: {}
+      css/project_details.css: {}

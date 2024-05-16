@@ -1,0 +1,48 @@
+.profile-image {
+  float: left;
+  width: 40%;
+  margin-right: 20px;
+}
+
+.profile-details {
+  float: left;
+  width: 55%;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.projects-grid {
+  clear: both;
+}
+
+.projects-grid .field--name-field-images {
+  float: left;
+  width: 30%;
+  margin-right: 2%;
+}
+
+.projects-grid .field--name-field-title {
+  float: left;
+  width: 30%;
+  margin-right: 2%;
+}
+
+.projects-grid .field--name-field-description {
+  float: left;
+  width: 30%;
+}
+
+/* Style for the grid container */
+.paragraph-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  gap: 20px; /* Gap between grid items */
+}
+
+/* Style for each grid item */
+.grid-item {
+  border: 1px solid #ccc; /* Border for each item */
+  padding: 20px; /* Padding around each item */
+}

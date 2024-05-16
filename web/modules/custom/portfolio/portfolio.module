@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @file
+ * Contains my_custom_module.module.
+ */
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function portfolio_views_pre_render(ViewExecutable $view)
+{
+    // Check if the current View is the one you want to attach the CSS file to.
+    if ($view->id() === 'view_porfolio_listing' || $view->id() === 'project_details_view') {
+        // Attach the CSS file to the View.
+        $view->element['#attached']['library'][] = 'portfolio/listing_view_css';
+    }
+
+}

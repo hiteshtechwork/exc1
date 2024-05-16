@@ -1,0 +1,42 @@
+.portfolio-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.profile-image img {
+  max-width: 200px;
+  height: auto;
+}
+
+.portfolio-info {
+  flex: 1 1 auto;
+  margin: 20 px;
+}
+
+.portfolio-info h2 {
+  margin-top: 0;
+}
+
+.portfolio-info p {
+  margin-bottom: 5px;
+}
+
+.portfolio-info a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.portfolio-info a:hover {
+  background-color: #0056b3;
+}
