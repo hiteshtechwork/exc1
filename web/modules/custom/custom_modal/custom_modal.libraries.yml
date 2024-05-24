@@ -1,0 +1,9 @@
+custom_modal:
+  version: 1.x
+  js:
+    js/custom_modal.js: {}
+  css:
+    theme:
+      css/custom_modal.css: {}
+  dependencies:
+    - core/drupal.dialog.ajax

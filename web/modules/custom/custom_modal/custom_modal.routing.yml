@@ -1,0 +1,19 @@
+custom_modal.form:
+  path: "/custom-modal/form/{id}"
+  defaults:
+    _form: '\Drupal\custom_modal\Form\CustomForm'
+    _title: "Custom Modal Form"
+  requirements:
+    _permission: "access content"
+  options:
+    parameters:
+      id:
+        type: "integer"
+        default: NULL
+custom_modal.edit:
+  path: "/custom-modal/edit/{id}"
+  defaults:
+    _controller: '\Drupal\custom_modal\Controller\CustomController::edit'
+    _title: "Edit Entry"
+  requirements:
+    _permission: "access content"

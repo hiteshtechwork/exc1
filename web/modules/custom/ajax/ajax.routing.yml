@@ -1,0 +1,15 @@
+ajax.form:
+  path: "/ajaxform"
+  defaults:
+    _form: '\Drupal\ajax\Form\CustomAjaxForm'
+    _title: "Custom Ajax Form"
+  requirements:
+    _permission: "access content"
+
+ajax.search:
+  path: "search-form"
+  defaults:
+    _form: '\Drupal\ajax\Form\SearchForm'
+    _title: "Custom ajax search Form"
+  requirements:
+    _permission: "accesss content"

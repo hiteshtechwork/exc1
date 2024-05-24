@@ -32,7 +32,6 @@ class PortfolioForm extends FormBase
             '#title' => $this->t('Personal Details'),
         ];
 
-        // Personal details fields...
         $form['personal_details']['field_firstname'] = [
             '#type' => 'textfield',
             '#title' => $this->t('First Name'),
@@ -101,7 +100,7 @@ class PortfolioForm extends FormBase
             '#suffix' => '</div>',
         ];
 
-        // Project fields...
+// Fields for the first project instance
         $form['project']['field_title'] = [
             '#type' => 'textfield',
             '#title' => $this->t('Project title'),
@@ -130,7 +129,7 @@ class PortfolioForm extends FormBase
             '#required' => false,
         ];
 
-        // Add button to dynamically add paragraph form elements
+// Add button to dynamically add paragraph form elements
         $form['add_paragraph'] = [
             '#type' => 'button',
             '#value' => $this->t('Add Another Project Paragraph'),
@@ -140,16 +139,17 @@ class PortfolioForm extends FormBase
             ],
         ];
 
-        // Container to hold dynamically added paragraph forms
+// Container to hold dynamically added paragraph forms
         $form['paragraphs_wrapper'] = [
             '#type' => 'container',
             '#attributes' => ['id' => 'paragraphs-wrapper'],
         ];
 
-        // Add JavaScript to handle adding a new project
+// Add JavaScript to handle adding a new project
         $form['#attached']['library'][] = 'portfolio/listing_view_css';
 
-        // Add submit button
+/////////////////////////////////////////////
+
         $form['actions'] = [
             '#type' => 'actions',
         ];
@@ -197,6 +197,16 @@ class PortfolioForm extends FormBase
         return $form['paragraphs_wrapper'];
     }
 
+    // Form validation and submission functions remain the same
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateForm(array &$form, FormStateInterface $form_state)
+    {
+        // Add form validation logic here if needed.
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -204,51 +214,23 @@ class PortfolioForm extends FormBase
     {
         $values = $form_state->getValues();
 
-        // Create an array to store all paragraph entities
-        $paragraphs = [];
-//       echo "<pre>";
-// print_r($values['field_title'] . "<br>");
-// print_r($values['field_description'] . "<br>");
-// print_r($values['field_images'] . "<br>");
-// print_r($values['field_website_link'] . "<br>");
-// echo "</pre>";
-// exit();
-
-        // Check if paragraphs wrapper exists in form values and it's not null
-
-        echo "one";
         echo "<pre>";
-        dump($values);
-        print_r($values['projects-wrapper'] . "<br> first");
-        print_r($values['paragraphs_wrapper'] . "<br> second");
+        print_r($values);
         echo "</pre>";
 
-        exit();
-        // Iterate through the submitted paragraph values
-        foreach ($values['paragraphs_wrapper'] as $paragraph_values) {
+        // exit();
 
-            echo "two";
-            // Create a new Paragraph entity
-            $paragraph = Paragraph::create([
-                'type' => 'projects',
-                'field_title' => $paragraph_values['field_title'],
-                'field_description' => $paragraph_values['field_description'],
-                'field_images' => $paragraph_values['field_images'],
-                'field_website_link' => $paragraph_values['field_website_link'],
-            ]);
+        // Create the Paragraph entity
+        $paragraph = Paragraph::create([
+            'type' => 'projects',
+            'field_title' => $values['field_title'],
+            'field_description' => $values['field_description'],
+            'field_images' => $values['field_images'],
+            'field_website_link' => $values['field_website_link'],
+        ]);
+        $paragraph->save();
 
-            // Save the Paragraph entity
-            $paragraph->save();
-            echo "<pre>";
-            print_r($paragraph . "<br>");
-            echo "</pre>";
-
-            // Add the paragraph entity to the array
-            $paragraphs[] = $paragraph;
-        }
-
-        exit();
-        // Create a new node of the "portfolio" content type
+        // Create a new node of the "portfolio" content type.
         $node = Node::create([
             'type' => 'portfolio',
             'title' => $values['field_firstname'] . ' ' . $values['field_lastname'],
@@ -261,18 +243,41 @@ class PortfolioForm extends FormBase
             'field_mobile_number' => $values['field_mobile_number'],
             'field_profile_picture' => $values['field_profile_picture'],
             'field_short_bio' => $values['field_short_bio'],
-            'field_projects_ref' => array_map(function ($paragraph) {
-                return [
-                    'target_id' => $paragraph->id(),
-                    'target_revision_id' => $paragraph->getRevisionId(),
-                ];
-            }, $paragraphs),
+            'field_projects_ref' => [
+                'target_id' => $paragraph->id(),
+                'target_revision_id' => $paragraph->getRevisionId(),
+            ],
+
         ]);
 
-        // Save the node entity
         $node->save();
 
-        // Provide a message indicating successful node creation
+//         // Load or create the Paragraph entity
+//         $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+//         $paragraph = $paragraph_storage->create([
+//             'type' => 'Projects', // Replace with your paragraph type
+//             'field_title' => $values['field_title'],
+//             'field_description' => $values['field_description'],
+//             'field_images' => $values['field_images'],
+//             'field_website_link' => $values['field_website_link'],
+
+//         ]);
+// // Save the Paragraph entity
+//         $paragraph->save();
+// // Load the node entity where you want to set the reference
+//         $node_storage = \Drupal::entityTypeManager()->getStorage('node');
+//         $node = $node_storage->load($node_id); // Replace $node_id with the ID of your node
+// // Set the Entity Reference Revision field value
+//         if ($node) {
+//             $node->set('field_paragraph_reference', [
+//                 'target_id' => $paragraph->id(),
+//                 'target_revision_id' => $paragraph->getRevisionId(),
+//             ]);
+//             $node->save();
+//         }
+
         \Drupal::messenger()->addMessage($this->t('Portfolio node created successfully.'));
+
     }
+
 }

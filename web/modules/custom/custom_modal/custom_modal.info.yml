@@ -1,0 +1,5 @@
+name: "Custom Modal"
+type: module
+description: "A custom module to demonstrate modal forms."
+core_version_requirement: ^10
+package: Custom

@@ -4,3 +4,7 @@ listing_view_css:
     theme:
       css/listing_view.css: {}
       css/project_details.css: {}
+  js:
+    js/yourscript.js: {}
+  dependencies:
+    - core/jquery

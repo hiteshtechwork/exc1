@@ -1,0 +1,6 @@
+custom-ajax-dialog:
+  version: VERSION
+  js:
+    js/custom-ajax-dialog.js: {}
+  dependencies:
+    - core/drupal.dialog

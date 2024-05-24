@@ -1,0 +1,7 @@
+custom_ajax.ajax_form:
+  path: "/cstm/ajaxform"
+  defaults:
+    _form: '\Drupal\custom_ajax\Form\CustomAjaxForm'
+    _title: "Custom AJAX Form"
+  requirements:
+    _permission: "access content"

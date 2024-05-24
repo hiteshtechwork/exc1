@@ -1,0 +1,7 @@
+name: "Custom AJAX"
+type: module
+description: "Demonstrates AJAX functionality in Drupal."
+core_version_requirement: ^8 || ^9 || ^10
+package: "Custom"
+dependencies:
+  - drupal:ajax
