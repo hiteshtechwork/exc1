@@ -20,7 +20,8 @@
         "drupal/core-project-message": "^10.2",
         "drupal/core-recommended": "^10.2",
         "drupal/examples": "4.0",
-        "drupal/paragraphs": "^1.17"
+        "drupal/paragraphs": "^1.17",
+        "drupal/restui": "1.21"
     },
     "conflict": {
         "drupal/drupal": "*"

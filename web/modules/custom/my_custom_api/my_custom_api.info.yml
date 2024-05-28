@@ -1,0 +1,8 @@
+name: "My Custom API"
+type: module
+description: "Provides a custom REST API endpoint."
+core_version_requirement: ^8 || ^10
+package: Custom
+dependencies:
+  - drupal:node
+  - drupal:rest
